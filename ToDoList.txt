@@ -1,0 +1,24 @@
+//QuickSort
+int partitionArray(vector<int>A,int pivot,int low,int high){
+	int i = low,j = low;
+	while(i <= high){
+		if(A[i] > pivot){
+			i++;
+		}
+		else{
+			swap(A[i],A[j]);
+			i++;
+			j++;
+		}
+	}
+	return j - 1;
+}
+void QuickSort(vector<int>A,int low,int high){
+	if(low > high){
+		return;
+	}
+	int pivot = A[high];
+	int pivotIndex = partitionArray(A,pivot,low,high);
+	QuickSort(A,low,pivotIndex-1);
+	QuickSort(A,pivotIndex+1,high);
+}
